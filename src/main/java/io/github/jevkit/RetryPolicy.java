@@ -8,7 +8,7 @@ import java.util.TreeSet;
 import java.util.function.DoubleSupplier;
 
 /**
- * When and how {@code JevClient} retries a failed request. The defaults match TypeSafe's official SDKs:
+ * When and how {@link JevClient} retries a failed request. The defaults match TypeSafe's official SDKs:
  *
  * <ul>
  *   <li>up to 2 retries after the first attempt;</li>

@@ -81,6 +81,24 @@
     </dependencies>
 
     <build>
+        <resources>
+            <!-- Only this file is filtered, so ${...} in any other resource stays as written. -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>io/github/jevkit/jev-java.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>io/github/jevkit/jev-java.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
