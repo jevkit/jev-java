@@ -13,6 +13,7 @@ public record NoulAnswer(double value) implements Answer {
     /**
      * Validates that the value is a probability.
      *
+     * @param value probability that the answer is yes, from 0 to 1
      * @throws IllegalArgumentException if {@code value} is not between 0 and 1
      */
     public NoulAnswer {

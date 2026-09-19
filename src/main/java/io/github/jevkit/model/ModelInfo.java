@@ -14,6 +14,9 @@ public record ModelInfo(String name, String description, String releaseDate) {
     /**
      * Creates a model entry; every field is required.
      *
+     * @param name        the model id or alias
+     * @param description what the model or alias is for
+     * @param releaseDate when it was released, as the API reports it
      * @throws NullPointerException if any field is {@code null}
      */
     public ModelInfo {

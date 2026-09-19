@@ -28,6 +28,8 @@ public record ScoreQuestion(Object instructions, List<Object> levels) implements
     /**
      * Validates the question and copies its content into unmodifiable structures.
      *
+     * @param instructions what the model should rate
+     * @param levels       level descriptions from lowest to highest, at least two
      * @throws IllegalArgumentException if there are fewer than two levels, a level is {@code null}, or any content
      *                                  cannot be represented as JSON
      */

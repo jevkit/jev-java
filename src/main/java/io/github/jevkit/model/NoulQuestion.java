@@ -23,6 +23,9 @@ public record NoulQuestion(Object instructions, Object whenTrue, Object whenFals
     /**
      * Validates the question and copies its content into unmodifiable structures.
      *
+     * @param instructions the yes/no question
+     * @param whenTrue     what a yes means, or {@code null}
+     * @param whenFalse    what a no means, or {@code null}
      * @throws IllegalArgumentException if any content cannot be represented as JSON
      */
     public NoulQuestion {

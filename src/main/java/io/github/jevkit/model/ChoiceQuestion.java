@@ -29,6 +29,8 @@ public record ChoiceQuestion(Object instructions, Map<String, Object> options) i
     /**
      * Validates the question and copies its content into unmodifiable structures.
      *
+     * @param instructions what the model should decide
+     * @param options      option name to description, at least two
      * @throws IllegalArgumentException if there are fewer than two options, a name is blank, or any content cannot be
      *                                  represented as JSON
      */

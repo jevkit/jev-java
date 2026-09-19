@@ -24,6 +24,10 @@ public record ScoreAnswer(double score, double confidence, List<String> legend, 
     /**
      * Validates the answer and copies {@code legend} and {@code probabilities} into unmodifiable lists.
      *
+     * @param score         position along the levels
+     * @param confidence    how certain the model is, from 0 to 1
+     * @param legend        each level's description, indexed by level
+     * @param probabilities each level's probability, indexed by level
      * @throws IllegalArgumentException if there are fewer than two levels, {@code legend} and {@code probabilities}
      *                                  differ in size, or a number is out of range
      */

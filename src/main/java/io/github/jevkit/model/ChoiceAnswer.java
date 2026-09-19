@@ -19,6 +19,9 @@ public record ChoiceAnswer(String choice, double confidence, Map<String, Double>
     /**
      * Validates the answer and copies {@code probabilities} into an unmodifiable map.
      *
+     * @param choice        the option with the highest probability
+     * @param confidence    how certain the model is, from 0 to 1
+     * @param probabilities every option mapped to its probability
      * @throws IllegalArgumentException if {@code choice} is blank or missing from {@code probabilities}, or if any
      *                                  number is not between 0 and 1
      */

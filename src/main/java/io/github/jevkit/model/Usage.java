@@ -11,6 +11,8 @@ public record Usage(long inputTokens, long outputTokens) {
     /**
      * Creates a usage report; counts cannot be negative.
      *
+     * @param inputTokens  tokens in the state and questions
+     * @param outputTokens tokens in the answers
      * @throws IllegalArgumentException if a count is negative
      */
     public Usage {
