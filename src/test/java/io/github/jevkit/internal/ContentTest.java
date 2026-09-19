@@ -1,4 +1,4 @@
-package io.github.jevkit.model;
+package io.github.jevkit.internal;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,7 @@
 package io.github.jevkit.model;
 
+import io.github.jevkit.internal.Content;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;

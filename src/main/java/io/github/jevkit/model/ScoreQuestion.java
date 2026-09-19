@@ -1,5 +1,7 @@
 package io.github.jevkit.model;
 
+import io.github.jevkit.internal.Content;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

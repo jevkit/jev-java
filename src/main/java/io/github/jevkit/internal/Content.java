@@ -1,4 +1,4 @@
-package io.github.jevkit.model;
+package io.github.jevkit.internal;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -13,14 +13,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Validates and copies content that is sent to the API as JSON: {@code state}, {@code instructions}, and option or level
+ * Internal to jev-java, not part of its API: it can change or disappear in any release.
+ *
+ * <p>Validates and copies content that is sent to the API as JSON: {@code state}, {@code instructions}, and option or level
  * descriptions.
  *
  * <p>The result is built only from {@code String}, {@code Boolean}, {@code Number}, {@code null}, unmodifiable
  * {@code List} and unmodifiable insertion-ordered {@code Map<String, Object>}. Records are converted to maps here, in
  * component order, so serialization never depends on Gson's record support, which older Gson versions lack.
  */
-final class Content {
+public final class Content {
 
     private static final int MAX_DEPTH = 64;
 
@@ -33,7 +35,7 @@ final class Content {
      * @return an immutable copy of {@code value}
      * @throws IllegalArgumentException if the value, or anything nested in it, cannot be represented as JSON
      */
-    static Object copyOf(Object value, String path) {
+    public static Object copyOf(Object value, String path) {
         return copy(value, path, 0);
     }
 
