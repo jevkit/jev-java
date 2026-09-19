@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Java ${{ matrix.java }}, Gson ${{ matrix.gson }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 17 is the minimum the library compiles for; 21 and 25 are the newer LTS releases.
+        java: ['17', '21', '25']
+        gson: ['from pom']
+        include:
+          # The oldest Gson the code supports, for applications where an older Gson wins on the classpath.
+          - java: '17'
+            gson: '2.8.9'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+
+      # Unit tests and a local HTTP server only; the billed live API tests are excluded by the pom.
+      - name: Build and test
+        env:
+          GSON_VERSION: ${{ matrix.gson }}
+        run: |
+          if [ "$GSON_VERSION" = "from pom" ]; then
+            ./mvnw -B -ntp verify
+          else
+            ./mvnw -B -ntp verify -Dgson.version="$GSON_VERSION"
+          fi
