@@ -3,6 +3,11 @@
 jev-java follows [semantic versioning](https://semver.org). While the version is `0.x`, a minor release (`0.2.0`)
 may include breaking changes; they are listed here.
 
+## Unreleased
+
+- Cancelling an asynchronous result now propagates to the underlying HTTP transfer, releasing a stalled response
+  instead of leaving it active and potentially blocking client shutdown on Java 21 and later.
+
 ## 0.1.0 — 2026-09-19
 
 First release.

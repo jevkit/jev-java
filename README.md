@@ -131,7 +131,7 @@ client.evaluateAsync(questions)
         });
 ```
 
-The future fails only with a `JevException`. Cancelling it stops any retry that has not started yet.
+The future fails only with a `JevException`. Cancelling it requests cancellation of the in-flight HTTP transfer and stops any retry that has not started yet.
 
 ## Errors
 
