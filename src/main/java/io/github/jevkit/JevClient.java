@@ -126,8 +126,8 @@ public final class JevClient implements AutoCloseable {
      * Asks every question in the request, in one call, without blocking the calling thread.
      *
      * <p>The returned future fails only with a {@link JevException}; {@code join()} reports it wrapped in a
-     * {@link CompletionException}, and {@code get()} in an {@link ExecutionException}. Cancelling the future stops
-     * any retries that have not started.
+     * {@link CompletionException}, and {@code get()} in an {@link ExecutionException}. Cancelling the future requests
+     * cancellation of the in-flight HTTP transfer and stops any retries that have not started.
      *
      * @param questions the state and questions
      * @return a future completed with the answers
@@ -278,6 +278,12 @@ public final class JevClient implements AutoCloseable {
             result.completeExceptionally(JevException.noResponse("Could not send the request: " + e, e));
             return;
         }
+
+        result.whenComplete((response, error) -> {
+            if (result.isCancelled()) {
+                sent.cancel(true);
+            }
+        });
 
         sent.whenComplete((response, error) -> {
             try {
